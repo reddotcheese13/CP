@@ -1,0 +1,151 @@
+#include <bits/stdc++.h>
+#define mod 998244353
+#define mod1 998244353
+using namespace std;
+
+
+template<typename A, typename B> ostream& operator<<(ostream &os, const pair<A, B> &p) { return os << '(' << p.first << ", " << p.second << ')'; }
+template<typename T_container, typename T = typename enable_if<!is_same<T_container, string>::value, typename T_container::value_type>::type> ostream& operator<<(ostream &os, const T_container &v) { os << '{'; string sep; for (const T &x : v) os << sep << x, sep = ", "; return os << '}'; }
+
+template<typename Head, typename... Tail> void dbg_out(Head H, Tail... T) { cerr << ' ' << H; dbg_out(T...); }
+
+
+#define ar array
+#define ll long long
+#define ld long double
+#define sza(x) ((int)x.size())
+#define all(a) (a).begin(), (a).end()
+
+#define PI 3.1415926535897932384626433832795l 
+const int MAX_N = 1e5 + 5;
+const ll MOD = 1e9 + 7;
+const ll INF = 1e9;
+const ld EPS = 1e-9;
+
+
+// -------------------------<RNG>------------------------- 
+// RANDOM NUMBER GENERATOR
+mt19937 RNG(chrono::steady_clock::now().time_since_epoch().count());  
+#define SHUF(v) shuffle(all(v), RNG); 
+// Use mt19937_64 for 64 bit random numbers.
+
+vector<int>cand;
+vector<int> prime(1000005);  
+vector<ll>primes;
+void SieveOfEratosthenes(int n) 
+{ 
+    for (ll p=2; p*p<=n; p++) 
+    { 
+        if (prime[p] == 0 ) 
+        { 
+            for (int i=p*p; i<=n; i += p) 
+                if(prime[i]==0)
+                prime[i] = p; 
+        } 
+    } 
+  
+    
+} 
+
+long long power(long long x, long long  y )
+{  
+    if(y<0ll)
+    return 0;
+    long long res = 1ll;     
+    x = x % mod; 
+    if (x == 0ll) return 0; 
+    while (y > 0ll)  
+    {  
+        if (y & 1ll)  
+            res = (res*x) % mod;  
+        y = y>>1ll; 
+        x = (x*x) % mod;  
+    }  
+    return res;  
+}  
+long long add(long long x, long long y)
+{
+    x%=mod;
+    y%=mod;
+   
+    return (x+y)%mod;
+}
+ 
+long long mul(long long x, long long y)
+{
+    return ((x%mod) * 1ll * (y%mod)) % mod;
+}
+ 
+long long binpow(long long x, long long y)
+{
+    if(y==0)
+    return 1ll;
+    long long z = 1ll;
+    x%=mod;
+    while(y)
+    {
+        if(y & 1) z = mul(z, x);
+        x = mul(x, x);
+        y >>= 1ll;
+    }
+    return z;
+}
+ 
+long long inv(long long x)
+{
+    return binpow(x, mod - 2);
+}
+ 
+long long divide(long long x, long long y)
+{
+    return mul(x, inv(y));
+}
+ 
+long long fact[200006];
+ 
+void precalc()
+{
+    fact[0] = 1;
+    for(long long i = 1; i < 200006; i++)
+        fact[i] =(fact[i - 1]*i)%mod;
+      //fact[i]=fact[i-1]*i;
+}
+ 
+long long C(long long n, long long k)
+{
+    if(n<k)
+    return 0;
+    if(k<0)
+    return 0;
+    if(n==0)
+    return 1;
+    return divide(fact[n], mul(fact[k], fact[n - k]));
+    //return (fact[n]/(fact[n-k]))/fact[k];
+}
+long long sub(long long A,long long B)
+{
+    return (A-B+mod)%mod;
+}
+//direction matrix
+int dx[8] = { 1, -1, 0, 0, 1, -1, 1, -1 };
+int dy[8] = { 0, 0, 1, -1, 1, -1, -1, 1 };
+
+void solve() {
+    // Add your solution here 
+
+}
+
+    
+
+int main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);
+    ll tc = 1;
+    cin >> tc;
+    //SieveOfEratosthenes(1000002);
+    //precalc();
+    for (ll t = 1; t <= tc; t++) {
+        // cout << "Case #" << t << ": ";
+        solve();
+    }
+}
