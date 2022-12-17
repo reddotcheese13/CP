@@ -2,13 +2,67 @@
 #define mod 998244353
 #define mod1 998244353
 using namespace std;
-
+#define int long long
 
 template<typename A, typename B> ostream& operator<<(ostream &os, const pair<A, B> &p) { return os << '(' << p.first << ", " << p.second << ')'; }
 template<typename T_container, typename T = typename enable_if<!is_same<T_container, string>::value, typename T_container::value_type>::type> ostream& operator<<(ostream &os, const T_container &v) { os << '{'; string sep; for (const T &x : v) os << sep << x, sep = ", "; return os << '}'; }
 
 template<typename Head, typename... Tail> void dbg_out(Head H, Tail... T) { cerr << ' ' << H; dbg_out(T...); }
 
+
+
+typedef long long ll;
+typedef pair<int, int> pii;
+typedef pair<ll, ll> pll;
+typedef pair<string, string> pss;
+typedef vector<int> vi;
+typedef vector<vi> vvi;
+typedef vector<pii> vii;
+typedef vector<ll> vl;
+typedef vector<vl> vvl;
+ 
+double PI = acos(-1);
+#define FOR(a, b, c) for (int(a) = (b); (a) < (c); ++(a))
+#define FORN(a, b, c) for (int(a) = (b); (a) <= (c); ++(a))
+#define FORD(a, b, c) for (int(a) = (b); (a) >= (c); --(a))
+#define FORSQ(a, b, c) for (int(a) = (b); (a) * (a) <= (c); ++(a))
+#define FORC(a, b, c) for (char(a) = (b); (a) <= (c); ++(a))
+#define FOREACH(a, b) for (auto&(a) : (b))
+#define REP(i, n) FOR(i, 0, n)
+#define REPN(i, n) FORN(i, 1, n)
+#define MAX(a, b) a = max(a, b)
+#define MIN(a, b) a = min(a, b)
+#define SQR(x) ((ll)(x) * (x))
+#define RESET(a, b) memset(a, b, sizeof(a))
+#define fi first
+#define se second
+#define pb push_back
+#define All(v) v.begin(), v.end()
+#define AllA(arr, sz) arr, arr + sz
+#define SIZE(v) (int)v.size()
+#define SORT(v) sort(All(v))
+#define REVERSE(v) reverse(All(v))
+#define SORTA(arr, sz) sort(AllA(arr, sz))
+#define REVERSEA(arr, sz) reverse(AllA(arr, sz))
+#define PERMUTE next_permutation
+#define TC(t) while (t--)
+ 
+inline string IntToString(ll a)
+{
+    char x[100];
+    sprintf(x, "%lld", a);
+    string s = x;
+    return s;
+}
+ 
+inline ll StringToInt(string a)
+{
+    char x[100];
+    ll res;
+    strcpy(x, a.c_str());
+    sscanf(x, "%lld", &res);
+    return res;
+}
 
 #define ar array
 #define ll long long
@@ -126,6 +180,7 @@ long long sub(long long A,long long B)
 {
     return (A-B+mod)%mod;
 }
+
 //direction matrix
 int dx[8] = { 1, -1, 0, 0, 1, -1, 1, -1 };
 int dy[8] = { 0, 0, 1, -1, 1, -1, -1, 1 };
@@ -135,11 +190,13 @@ void solve() {
 
 }
 
-    
-
-int main() {
+signed main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
+    // #ifndef ONLINE_JUDGE
+    // freopen("input.txt", "r", stdin);
+    // freopen("output.txt", "w", stdout);
+    // #endif
     ll tc = 1;
     cin >> tc;
     //SieveOfEratosthenes(1000002);
@@ -148,4 +205,5 @@ int main() {
         // cout << "Case #" << t << ": ";
         solve();
     }
+    return 0;
 }
